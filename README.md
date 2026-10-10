@@ -1,51 +1,79 @@
 # Cherry Blossom Grove
 
-A Minecraft datapack-focused project centered on a giant cherry blossom tree grown from a custom-looking sapling.
+A Minecraft datapack and resource-pack project focused on a giant cherry blossom tree grown from a custom sakura-style sapling.
 
-This repository is the starting point for a broader collection of Minecraft mods and datapacks. The first build focuses on a large sakura tree that can be spawned from a standard sapling with a custom resource-pack skin and a datapack growth routine.
-
-## Goal
-
-Create a stylized cherry blossom grove with:
-
-- a custom pink sakura tree silhouette inspired by the reference build
-- a sapling that visually reads as a cherry blossom sapling
-- a datapack-based growth trigger that turns a planted sapling into a giant flowering tree
-- future support for additional trees, worldgen, and optional mod integrations
-
-## Current structure
-
-- `datapack/` — world-generation and growth logic
-- `resource_pack/` — visual overrides for sapling model and custom art source
-- `docs/` — design notes and implementation plan
-
-## v2 generator notes
-
-The v2 giant tree generator now includes:
-
-- curved/traveling trunk profile instead of a straight tower
-- root pedestal and buttress roots
-- multi-lobe blossom canopy (west/east/north/south/crown)
-- inner canopy air pockets for a less spherical silhouette
-- cherry leaf particles and ambient sound on growth
+This repository is the start of a broader collection of Minecraft mods and datapacks. The first project is a large flowering cherry tree inspired by the reference build, with a custom visual sapling and datapack-based growth routine.
 
 ## Installation
 
-1. Place the `datapack/` folder into your world's `datapacks` directory.
-2. Place the `resource_pack/` folder into your resource packs folder.
-3. Enable both packs.
-4. Drop an oak sapling on the ground where you want the tree to generate.
+### 1) Copy the datapack
 
-> Current trigger uses dropped `oak_sapling` item entities for deterministic growth in datapack-only mode.
+Copy the folder named `datapack` into your Minecraft world's datapacks directory.
+
+Typical locations:
+
+- Windows: `%appdata%\.minecraft\saves\<worldname>\datapacks`
+- macOS: `~/Library/Application Support/minecraft/saves/<worldname>/datapacks`
+- Linux: `~/.minecraft/saves/<worldname>/datapacks`
+
+After copying, the structure should look like this:
+
+```text
+<world>/datapacks/
+  cherryblossom/
+    pack.mcmeta
+    data/
+      cherryblossom/
+        functions/
+```
+
+### 2) Copy the resource pack
+
+Copy the folder named `resource_pack` into your Minecraft resource packs folder.
+
+Typical locations:
+
+- Windows: `%appdata%\.minecraft\resourcepacks`
+- macOS: `~/Library/Application Support/minecraft/resourcepacks`
+- Linux: `~/.minecraft/resourcepacks`
+
+### 3) Enable both in-game
+
+In Minecraft:
+
+1. Open Options > Resource Packs
+2. Move the cherry blossom pack to the active list
+3. Load the world
+4. Run `/reload`
+5. Check `/datapack list`
+
+### 4) Spawn the tree
+
+This first version is designed to generate from a dropped `oak_sapling` item, so:
+
+- drop an oak sapling on the ground
+- make sure the area is empty enough for the large tree to generate
+- the datapack will trigger the giant cherry blossom growth routine
+
+## Notes
+
+- This is a datapack-first prototype, not a full Forge/Fabric mod yet.
+- The custom sapling texture is a visual override only for the first iteration.
+- Future versions may include a true custom item/block registration, biome generation, and more advanced tree logic.
+
+## Repository layout
+
+- `datapack/` — the Minecraft datapack logic
+- `resource_pack/` — the visual overrides for the sapling and related assets
+- `docs/` — design notes and project documentation
 
 ## Roadmap
 
-- [x] Repository scaffolding
+- [x] Basic repository setup
 - [x] Cherry blossom tree concept and visual direction
 - [x] Datapack growth logic scaffold
 - [x] Resource-pack model override scaffold
-- [x] v2 stylized giant tree pass (curved trunk + canopy lobes)
-- [ ] Bone-meal and planted-sapling growth workflow
-- [ ] Better branch micro-detail and canopy noise patterns
-- [ ] Optional custom item/block registration in a mod version
-- [ ] Additional blossom trees and biome variants
+- [x] V2 tree shape improvement with curved trunk and multi-lobe canopy
+- [ ] More realistic branching and petal detail
+- [ ] Bone-meal/planted sapling support
+- [ ] Optional mod version with custom block/item registration
