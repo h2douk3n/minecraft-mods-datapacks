@@ -12,15 +12,24 @@ The tree direction is based on a tall sakura silhouette with:
 - pink bloom clusters and layered branches
 - a large initial footprint that reads clearly in-world
 
-## Datapack behavior
+## Current implementation status (v2)
 
-The first datapack implementation uses a standard sapling item with a resource-pack override so it visually appears as a cherry blossom sapling while still being a valid vanilla sapling trigger. The growth function then replaces the dropped item with a large tree structure using `fill` patterns.
+The datapack now uses a guarded growth function chain:
+
+- `tick` -> `grow/check_and_grow` -> `grow/giant_cherry_blossom_v2`
+
+### What changed in v2
+
+- Trunk shape now drifts while rising to suggest a natural bend.
+- Root base expanded with mud + dark oak buttress roots.
+- Canopy split into several masses (crown, west, east, north, south).
+- Negative-space cuts create canopy pocketing.
+- Blossom-themed particles and ambience added at generation time.
 
 ## Expansion ideas
 
-- custom tree generation by biome
-- blossom particles and ambient sound
-- sakura petal storms
-- decorative logs, planks, and leaves
-- biome tags and loot tables
-- a Fabric/Forge mod version with real custom item registration
+- trigger from planted sapling + bone meal detection
+- use multiple weighted tree variants for forest feel
+- add branch-level stochastic detailing via marker functions
+- biome tags and loot integration
+- Fabric/Forge port with true custom blocks/items

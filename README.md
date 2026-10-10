@@ -15,20 +15,28 @@ Create a stylized cherry blossom grove with:
 
 ## Current structure
 
-- `datapack/` — the world-generation and growth logic
-- `resource_pack/` — visual overrides for the sapling model and custom art source
-- `README.md` — project overview and setup instructions
+- `datapack/` — world-generation and growth logic
+- `resource_pack/` — visual overrides for sapling model and custom art source
+- `docs/` — design notes and implementation plan
+
+## v2 generator notes
+
+The v2 giant tree generator now includes:
+
+- curved/traveling trunk profile instead of a straight tower
+- root pedestal and buttress roots
+- multi-lobe blossom canopy (west/east/north/south/crown)
+- inner canopy air pockets for a less spherical silhouette
+- cherry leaf particles and ambient sound on growth
 
 ## Installation
 
 1. Place the `datapack/` folder into your world's `datapacks` directory.
 2. Place the `resource_pack/` folder into your resource packs folder.
-3. Load the resource pack and enable the datapack in-game.
-4. Plant the visually customized sapling and let the datapack generate the giant blossom tree.
+3. Enable both packs.
+4. Drop an oak sapling on the ground where you want the tree to generate.
 
-## Notes
-
-This repo is intentionally structured as a strong starting point for a full mod/datapack ecosystem. It focuses on a realistic single-feature MVP before expanding into additional blocks, foliage, loot, biome integration, or Fabric/Forge support.
+> Current trigger uses dropped `oak_sapling` item entities for deterministic growth in datapack-only mode.
 
 ## Roadmap
 
@@ -36,10 +44,8 @@ This repo is intentionally structured as a strong starting point for a full mod/
 - [x] Cherry blossom tree concept and visual direction
 - [x] Datapack growth logic scaffold
 - [x] Resource-pack model override scaffold
-- [ ] Final animated growth and leaf clustering polish
-- [ ] Optional custom block/item definitions for a proper mod version
-- [ ] Add more biome, loot, and decorative features
-
-## Design inspiration
-
-The initial tree is inspired by a tall, heavily branched cherry blossom silhouette with a broad canopy, dense pink bloom clusters, and a dramatic root-heavy base.
+- [x] v2 stylized giant tree pass (curved trunk + canopy lobes)
+- [ ] Bone-meal and planted-sapling growth workflow
+- [ ] Better branch micro-detail and canopy noise patterns
+- [ ] Optional custom item/block registration in a mod version
+- [ ] Additional blossom trees and biome variants

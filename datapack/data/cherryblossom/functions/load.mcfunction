@@ -2,4 +2,4 @@
 scoreboard objectives add cb_grow dummy
 scoreboard objectives add cb_timer dummy
 
-say [Cherry Blossom Grove] datapack loaded
+say [Cherry Blossom Grove] datapack loaded (v2 tree generator)
