@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "minecraft:item/beetroot_seeds"
+  },
+  "overrides": [
+    {
+      "predicate": { "custom_model_data": 1210001 },
+      "model": "cherryblossom:item/giant_cherry_blossom_seed"
+    }
+  ]
+}

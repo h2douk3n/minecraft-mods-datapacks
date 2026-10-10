@@ -1,79 +1,58 @@
 # Cherry Blossom Grove
 
-A Minecraft datapack and resource-pack project focused on a giant cherry blossom tree grown from a custom sakura-style sapling.
+A Minecraft datapack + resource pack that adds the **Giant Cherry Blossom Seed**, which grows a huge cherry blossom tree.
 
-This repository is the start of a broader collection of Minecraft mods and datapacks. The first project is a large flowering cherry tree inspired by the reference build, with a custom visual sapling and datapack-based growth routine.
+**Target version:** Minecraft Java 1.21 / 1.21.1 (datapack `pack_format` 48, resource pack `pack_format` 34).
+
+## Crafting
+
+Fill all 9 slots of a crafting table with **cherry saplings**:
+
+```text
+S S S
+S S S
+S S S      S = Cherry Sapling
+```
+
+Result: **Giant Cherry Blossom Seed** (glowing, rare).
+
+## Using the seed
+
+1. Drop the seed on grass, dirt, or other soil with open space around and above it.
+2. Once it lands, the giant tree grows (one seed is used per tree).
 
 ## Installation
 
-### 1) Copy the datapack
+### Datapack
 
-Copy the folder named `datapack` into your Minecraft world's datapacks directory.
+Copy the `datapack/` folder into `<world>/datapacks/` (rename it e.g. `cherryblossom`). Make sure `pack.mcmeta` sits directly inside it.
 
-Typical locations:
+- Windows: `%appdata%\.minecraft\saves\<world>\datapacks`
+- macOS: `~/Library/Application Support/minecraft/saves/<world>/datapacks`
+- Linux: `~/.minecraft/saves/<world>/datapacks`
 
-- Windows: `%appdata%\.minecraft\saves\<worldname>\datapacks`
-- macOS: `~/Library/Application Support/minecraft/saves/<worldname>/datapacks`
-- Linux: `~/.minecraft/saves/<worldname>/datapacks`
+Then run `/reload` and check `/datapack list`.
 
-After copying, the structure should look like this:
+### Resource pack (optional, for the custom seed icon)
 
-```text
-<world>/datapacks/
-  cherryblossom/
-    pack.mcmeta
-    data/
-      cherryblossom/
-        functions/
+Copy `resource_pack/` into your `resourcepacks` folder and enable it. Without it the seed still works but looks like beetroot seeds.
+
+## Testing / creative
+
+```mcfunction
+/recipe give @s cherryblossom:giant_cherry_blossom_seed
+/give @s minecraft:beetroot_seeds[minecraft:custom_data={cherryblossom:{giant_seed:1}},minecraft:custom_model_data=1210001,minecraft:item_name="Giant Cherry Blossom Seed"]
 ```
-
-### 2) Copy the resource pack
-
-Copy the folder named `resource_pack` into your Minecraft resource packs folder.
-
-Typical locations:
-
-- Windows: `%appdata%\.minecraft\resourcepacks`
-- macOS: `~/Library/Application Support/minecraft/resourcepacks`
-- Linux: `~/.minecraft/resourcepacks`
-
-### 3) Enable both in-game
-
-In Minecraft:
-
-1. Open Options > Resource Packs
-2. Move the cherry blossom pack to the active list
-3. Load the world
-4. Run `/reload`
-5. Check `/datapack list`
-
-### 4) Spawn the tree
-
-This first version is designed to generate from a dropped `oak_sapling` item, so:
-
-- drop an oak sapling on the ground
-- make sure the area is empty enough for the large tree to generate
-- the datapack will trigger the giant cherry blossom growth routine
 
 ## Notes
 
-- This is a datapack-first prototype, not a full Forge/Fabric mod yet.
-- The custom sapling texture is a visual override only for the first iteration.
-- Future versions may include a true custom item/block registration, biome generation, and more advanced tree logic.
-
-## Repository layout
-
-- `datapack/` — the Minecraft datapack logic
-- `resource_pack/` — the visual overrides for the sapling and related assets
-- `docs/` — design notes and project documentation
+- Datapack-only: the seed is a renamed `beetroot_seeds` item tagged with custom data.
+- The old `datapack/data/cherryblossom/functions/` folder (plural) is obsolete and ignored by 1.21 and can be deleted. So can `resource_pack/assets/cherryblossom/textures/item/cherry_blossom_sapling.svg` and `resource_pack/assets/cherryblossom/models/item/cherry_blossom_sapling.json`.
 
 ## Roadmap
 
-- [x] Basic repository setup
-- [x] Cherry blossom tree concept and visual direction
-- [x] Datapack growth logic scaffold
-- [x] Resource-pack model override scaffold
-- [x] V2 tree shape improvement with curved trunk and multi-lobe canopy
-- [ ] More realistic branching and petal detail
-- [ ] Bone-meal/planted sapling support
-- [ ] Optional mod version with custom block/item registration
+- [x] Craftable Giant Cherry Blossom Seed
+- [x] Curved trunk + multi-lobe canopy generator
+- [ ] Custom seed texture
+- [ ] More branch/petal detail
+- [ ] Fabric/Forge version
